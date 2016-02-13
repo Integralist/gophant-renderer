@@ -4,6 +4,10 @@ A static publishing package
 
 > Ingest SQS messages, render content and store in S3 for easy lookup
 
+```bash
+go run renderer.go # make sure you have you AWS keys exported
+```
+
 ## Architecture
 
 Gophant is built on the premise of producers (renderers) and consumers (brokers):
@@ -114,7 +118,3 @@ There are flags you can use to configure the local setup (if you prefer not to u
 - `-dynamo-endpoint`: defaults to `spurious ports --json`
 
 > Note: with DynamoDB we default table names to `sequencer` and `lookup` 
-
-### Running the Renderer
-
-- `export AWS_ACCESS_KEY_ID=access; export AWS_SECRET_ACCESS_KEY=secret; go run renderer.go`
