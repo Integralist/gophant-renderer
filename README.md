@@ -6,9 +6,9 @@ A static publishing package
 
 ## Architecture
 
-Gophant built on the premise of producers (renderers) and consumers (brokers):
+Gophant is built on the premise of producers (renderers) and consumers (brokers):
 
-![Gophant Architecture](...)
+![Gophant Architecture](https://cloud.githubusercontent.com/assets/180050/13029403/4cfb12f4-d283-11e5-9958-d996b6cb97ab.png)
 
 ## Local setup
 
@@ -33,7 +33,7 @@ First thing we need to do is to create some fake services (SQS, DynamoDB, S3) fo
 
 You should see something like the following output when running `local.go` for the first time:
 
-```go
+```
 SQS Create Queue:
 {
   QueueUrl: "http://sqs.spurious.localhost:32768/producer"
