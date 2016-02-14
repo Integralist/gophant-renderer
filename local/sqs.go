@@ -22,8 +22,7 @@ type Sqs struct {
 }
 
 type message struct {
-	Sequence  int       `json:"sequence"`
-	Title     string    `json:"title"`
+	Data      string    `json:"data"`
 	Timestamp time.Time `json:"timestamp"`
 }
 
@@ -65,7 +64,7 @@ func createQueue(queue string) *sqs.CreateQueueOutput {
 }
 
 func sendMessage(queueURL *string) {
-	msg := message{1, "Foobar", time.Now()}
+	msg := message{exampleJSONFormat(), time.Now()}
 	b, err := json.Marshal(msg)
 	if err != nil {
 		fmt.Println("JSON Marshal Error:", err)
@@ -80,4 +79,21 @@ func sendMessage(queueURL *string) {
 	handleError("SQS", err)
 
 	fmt.Printf("SQS Sent Message:\n%v\n\n", resp)
+}
+
+func exampleJSONFormat() string {
+	return `{
+		"headers": {
+			"ndpSeqNo": 1
+		},
+		"body": {
+			"results": [
+				{
+					"gssId": "E07000026",
+					"regionName": "Foobar",
+					"councilWebSite": "http://www.foobar.com/"
+				}
+			]
+		}
+	}`
 }
